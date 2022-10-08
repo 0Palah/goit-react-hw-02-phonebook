@@ -39,6 +39,7 @@ export class App extends Component {
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
       ],
+      filter: '',
       name: '',
       number: '',
     });
@@ -56,8 +57,20 @@ export class App extends Component {
     this.setState({ filter: value });
   };
 
+  applyFilters = () => {
+    const { contacts, filter } = this.state;
+
+    return contacts.filter(({ name }) => {
+      // Якщо ми написали запит на пошук, але в юзера не співпадає ім'я з запитом, то він не підходить і повертаємо false
+      if (filter && !name.toLowerCase().includes(filter.toLowerCase()))
+        return false;
+      // В інших випадках true
+      return true;
+    });
+  };
+
   render() {
-    const { name, number, contacts } = this.state;
+    const { name, number, contacts, filter } = this.state;
     return (
       <div>
         <Section title="Phonebook">
@@ -69,9 +82,9 @@ export class App extends Component {
           />
         </Section>
         <Section title="Contacts">
-          <Filter onChangeSearch={this.handleChangeSearch} />
+          <Filter filter={filter} onChangeSearch={this.handleChangeSearch} />
           <ContactsList
-            contacts={contacts}
+            contacts={this.applyFilters()}
             onDeleteUser={this.handleDeleteUser}
           />
         </Section>

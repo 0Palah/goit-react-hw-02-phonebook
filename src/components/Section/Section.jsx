@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Section = ({ title, children }) => {
   return (
     <div className={css.sectionWrapper}>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       {children}
     </div>
   );
