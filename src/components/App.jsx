@@ -30,8 +30,9 @@ export class App extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { name, number } = this.state;
+    const { name, number, contacts } = this.state;
     console.log('submit', name, number);
+
     this.setState({
       contacts: [
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
