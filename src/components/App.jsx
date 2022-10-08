@@ -32,7 +32,6 @@ export class App extends Component {
     evt.preventDefault();
     const { name, number, contacts } = this.state;
     const namesArr = contacts.map(el => el.name.toLocaleLowerCase());
-    console.log('submit', name, number, namesArr);
     if (!namesArr.includes(name.toLocaleLowerCase())) {
       this.setState(prevState => ({
         contacts: [
