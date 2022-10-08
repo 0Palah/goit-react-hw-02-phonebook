@@ -31,19 +31,24 @@ export class App extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     const { name, number, contacts } = this.state;
-    console.log('submit', name, number);
+    const namesArr = contacts.map(el => el.name.toLocaleLowerCase());
 
-    this.setState({
-      contacts: [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ],
-      filter: '',
-      name: '',
-      number: '',
-    });
+    console.log('submit', name, number, namesArr);
+    if (!namesArr.includes(name.toLocaleLowerCase())) {
+      this.setState({
+        contacts: [
+          { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+          { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+          { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+          { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+        ],
+        filter: '',
+        name: '',
+        number: '',
+      });
+    } else {
+      alert(`${name} is already in contact.`);
+    }
   };
 
   handleDeleteUser = userId => {
