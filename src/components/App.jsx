@@ -32,20 +32,17 @@ export class App extends Component {
     evt.preventDefault();
     const { name, number, contacts } = this.state;
     const namesArr = contacts.map(el => el.name.toLocaleLowerCase());
-
     console.log('submit', name, number, namesArr);
     if (!namesArr.includes(name.toLocaleLowerCase())) {
-      this.setState({
+      this.setState(prevState => ({
         contacts: [
-          { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-          { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-          { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-          { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+          ...prevState.contacts,
+          { id: nanoid(10), name: name, number: number },
         ],
         filter: '',
         name: '',
         number: '',
-      });
+      }));
     } else {
       alert(`${name} is already in contact.`);
     }
