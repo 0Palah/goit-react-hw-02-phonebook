@@ -28,14 +28,15 @@ export default class ContactForm extends Component {
     return (
       <form className={css.form} onSubmit={this.handleSubmit}>
         <div
-          style={{
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontSize: 40,
-            color: '#010101',
-          }}
+          className={css.wrapper}
+          // style={{
+          //   height: '100vh',
+          //   display: 'flex',
+          //   flexDirection: 'column',
+          //   alignItems: 'center',
+          //   fontSize: 40,
+          //   color: '#010101',
+          // }}
         >
           <div>
             {' '}
@@ -65,7 +66,9 @@ export default class ContactForm extends Component {
             />
           </div>
 
-          <button type="submit">Add contact</button>
+          <button type="submit" className={css.button}>
+            Add contact
+          </button>
         </div>
       </form>
     );
