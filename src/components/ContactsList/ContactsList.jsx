@@ -4,7 +4,7 @@ import css from './ContactsList.module.css';
 
 const ContactsList = ({ contacts, onDeleteUser }) => {
   return (
-    <ul>
+    <ul className={css.contListWrapper}>
       {contacts.map(el => (
         <li key={el.id}>
           {el.name}: {el.number}
@@ -17,6 +17,9 @@ const ContactsList = ({ contacts, onDeleteUser }) => {
   );
 };
 
-ContactsList.propTypes = {};
+ContactsList.propTypes = {
+  contacts: PropTypes.func.isRequired,
+  onDeleteUser: PropTypes.func.isRequired,
+};
 
 export default ContactsList;
