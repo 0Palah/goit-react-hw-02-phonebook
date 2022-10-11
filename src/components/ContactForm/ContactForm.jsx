@@ -27,17 +27,7 @@ export default class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <form className={css.form} onSubmit={this.handleSubmit}>
-        <div
-          className={css.wrapper}
-          // style={{
-          //   height: '100vh',
-          //   display: 'flex',
-          //   flexDirection: 'column',
-          //   alignItems: 'center',
-          //   fontSize: 40,
-          //   color: '#010101',
-          // }}
-        >
+        <div className={css.wrapper}>
           <div>
             {' '}
             <label htmlFor="inputName">Name</label>
